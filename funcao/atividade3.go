@@ -7,23 +7,37 @@ import (
 	"math"
 )
 
+const (
+	PESO_BAIXO = "Peso Baixo"
+	NORMAL     = "Normal"
+	SOBREPESO  = "Sobrepeso"
+	OBESIDADE  = "Obesidade"
+)
+
 func main() {
 
 	peso := 63.0
 	altura := 1.70
 
+	fmt.Println(imc(peso, altura))
+
+}
+
+func imc(peso float64, altura float64) (float64, string) {
+
 	imc := peso / (math.Pow(altura, 2))
+	res_1 := math.Round(imc*100) / 100
 
 	if imc < 18.5 {
-		fmt.Println("Baixo peso")
+		return res_1, PESO_BAIXO
 
 	} else if imc < 25 {
-		fmt.Println("Normal")
+		return res_1, NORMAL
 
 	} else if imc <= 30 {
-		fmt.Println("Sobrepeso")
+		return res_1, SOBREPESO
 
 	} else {
-		fmt.Println("Obesidade")
+		return res_1, OBESIDADE
 	}
 }

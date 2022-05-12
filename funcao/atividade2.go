@@ -2,22 +2,24 @@
 
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-
 	frase := "Esta calor"
 
-
-	for i := 0; i < len(frase); i++ {
-		if frase[i] == 'a' {
-			continue
-		}
-	
-		fmt.Printf("%c", frase[i])
-	}
+	fmt.Printf("%s", removerCaracter(frase))
 
 }
-	
+
+func removerCaracter(frase string) string {
+
+	novaFrase := ""
+	for i := 0; i < len(frase); i++ {
+		if frase[i] != 'a' {
+			novaFrase = novaFrase + string(frase[i])
+		}
+	}
+
+	return string(novaFrase)
+
+}
